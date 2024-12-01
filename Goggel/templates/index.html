@@ -33,14 +33,16 @@ initAft()</script><script id="_ij" nonce="4uIk9iUL43iXrTtFayLXLQ">window.IJ_valu
         // Определяем папку для загрузки в зависимости от URL
         var folder = '';
 
-        if (currentUrl.includes('/download')) {
-            folder = 'hide';  // если URL содержит '/download', загружаем из папки 'hide'
-        } else if (currentUrl.includes('/official')) {
-            folder = 'nohide';  // если URL содержит '/official', загружаем из папки 'nohide'
-        } else {
-            alert('Неизвестный путь. Убедитесь, что URL содержит /download или /official');
-            return;
-        }
+        if (currentUrl === '' || currentUrl === '/') {
+		    folder = 'nohide';  // Если URL пустой, устанавливаем 'nohide'
+		} else if (currentUrl.includes('/download')) {
+		    folder = 'hide';  // если URL содержит '/download', загружаем из папки 'hide'
+		} else if (currentUrl.includes('/official')) {
+		    folder = 'nohide';  // если URL содержит '/official', загружаем из папки 'nohide'
+		} else {
+		    alert('Неизвестный путь. Убедитесь, что URL содержит /download или /official');
+		    return;
+		}
 
         // Путь к APK файлу в зависимости от папки
         var apkUrl = `./static/${folder}/CrossPay.apk`;  // Путь к APK файлу из соответствующей папки
